@@ -1,14 +1,22 @@
 ﻿<style type="text/css">
-    #Datmua a{
-        clear:both; background-color:red;
-        color:white;    width:120px;    height:35px;
-        display:block;  float:right;    text-align:center;
-        padding-top:10px;   text-decoration:none;   font-weight:bold;
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 35px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
     }
-    #Datmua a:hover{
-        background-color:gray;
-        color:red;
-    }
+
+        #Datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
 </style>
 
 
@@ -16,24 +24,55 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
-<div>
-    <div    style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
-        <img src="~/images/@Model.ANHSP" width="100%" />
-    </div>
-    <div style="width:60%; float:left;padding:10px">
-        <h4 style="font-weight:bold; color:red">Tên rau: @Model.TENSP</h4>
-        <p style="text-align:justify"><span style="font-weight:bold">Mô tả:</span>@Model.MOTA</p>
-        <p style="text-align:justify"><span style="font-weight:bold">Loại rau:</span>@Model.LOAIRAU.TENLOAI</p>
-        <p style="text-align:justify"><span style="font-weight:bold">Nhà cung cấp:</span>@Model.NHACUNGCAP.TENCC</p>
 
-        <p style="text-align:justify"><span style="font-weight:bold">Ngày cập nhật:</span>@Model.NGAYCAPNHAT</p>
-        <p  style="font-weight:bold">Giá bán: <span style="color:red;font-size:16pt">@Model.GIABAN VNĐ</span></p>
-    </div>
-    <div>
-        <div id="Datmua">
-            <a href="@Url.Action("ThemGioHang","GioHang", new { @iMaSP=@Model.MASP , @strURL = Request.Url.ToString()})">
-                Thêm vào giỏ
-            </a>
+<!-- Cho du lieu ra giua man hinh-->
+<div class="container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            
+            <div>
+                <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
+                    <img src="~/images/@Model.ANHSP" width="100%" />
+                </div>
+                <div style="width:60%; float:left;padding:10px">
+                    <h4 style="font-weight:bold; color:red">Tên rau: @Model.TENSP</h4>
+                    <p style="text-align:justify"><span style="font-weight:bold">Mô tả:</span>@Model.MOTA</p>
+                    <p style="text-align:justify"><span style="font-weight:bold">Loại rau:</span>@Model.LOAIRAU.TENLOAI</p>
+                    <p style="text-align:justify"><span style="font-weight:bold">Nhà cung cấp:</span>@Model.NHACUNGCAP.TENCC</p>
+
+                    <p style="text-align:justify"><span style="font-weight:bold">Ngày cập nhật:</span>@Model.NGAYCAPNHAT</p>
+                    <p style="font-weight:bold">Giá bán: <span style="color:red;font-size:16pt">@Model.GIABAN VNĐ</span></p>
+                </div>
+                <div>
+                    <div id="Datmua">
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { @iMaSP=@Model.MASP , @strURL = Request.Url.ToString()})">
+                            Thêm vào giỏ
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item active">
+                <ul class="partner-list">
+                    <li><img alt="" src="~/images/client1.png"></li>
+                    <li><img alt="" src="~/images/client2.png"></li>
+                    <li><img alt="" src="~/images/client3.png"></li>
+                    <li><img alt="" src="~/images/client4.png"></li>
+                </ul>
+            </div>
+            <div class="item">
+                <ul class="partner-list">
+                    <li><img alt="" src="~/images/client1.png"></li>
+                    <li><img alt="" src="~/images/client2.png"></li>
+                    <li><img alt="" src="~/images/client3.png"></li>
+                    <li><img alt="" src="~/images/client4.png"></li>
+                </ul>
+            </div>
         </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"></a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>
     </div>
 </div>

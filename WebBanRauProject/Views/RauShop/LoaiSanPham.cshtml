@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<WebBanRauProject.Models.LOAIRAU>
 
 
-<li class="dropdown">
-@foreach (var item in Model)
-{
-    <a href="@Url.Action("LoaiSanPham","RauShop",new { id = item.MALOAI })" data-toggle="dropdown" class="dropdown-toggle">Sản phẩm</a>
-    <ul class="dropdown-menu">
-        @item.TENLOAI
-    </ul>
-</li>
+
+    <a href="" data-toggle="dropdown" class="dropdown-toggle">Sản phẩm</a>
+<ul class="dropdown-menu">
+    @foreach (var item in Model)
+    {
+
+        <li><a href="@Url.Action("SanPhamTheoLoai","RauShop",new { @id=item.MALOAI})">@item.TENLOAI</a></li>
+    }
+    <li><a href="@Url.Action("ShowAll", "RauShop")">Tất cả sản phẩm</a></li>
+</ul>

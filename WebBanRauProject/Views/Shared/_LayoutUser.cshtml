@@ -58,17 +58,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="@Url.Action("Index", "RauShop")">Trang chủ</a></li>
-                        <li class="dropdown">
-                            <a href="@Url.Action("ShowAll", "RauShop")" data-toggle="dropdown" class="dropdown-toggle">Sản phẩm</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("SanPhamTheoLoai/1" , "RauShop")">Rau</a></li>
-                                <li><a href="@Url.Action("SanPhamTheoLoai/2" , "RauShop")">Củ</a></li>
-                                <li><a href="@Url.Action("SanPhamTheoLoai/3" , "RauShop")">Nấm</a></li>
-                                <li><a href="@Url.Action("Index" , "RauShop")">Sẩn phẩm mới</a></li>
-                                <li><a href="shop.html">Sẩn phẩm bán chạy</a></li>
-                            </ul>
-                        </li>
+                        <li class="dropdown">@Html.Action("LoaiSanPham", "RauShop")</li>
 
 
                         <!-- <li><a href="shop.html">Sản phẩm</a></li> -->
@@ -157,7 +147,7 @@
     </div>
 
     <!-- partners box -->
-    <div class="container">
+    @*<div class="container">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
@@ -182,7 +172,7 @@
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"></a>
             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>
         </div>
-    </div>
+    </div>*@
     <!--end-partners box -->
     <!--articles-->
     @*<div class="container">
