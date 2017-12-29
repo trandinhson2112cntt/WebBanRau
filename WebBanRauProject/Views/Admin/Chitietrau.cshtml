@@ -1,0 +1,82 @@
+﻿@model WebBanRauProject.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông tin chi tiết Rau</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSP)
+        </dd>
+
+        <dt>
+            Giá bán(/kg):
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}",Model.GIABAN) VNĐ
+        </dd>
+
+        <dt>
+            Mô tả: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            Ảnh sản phẩm: 
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+Model.ANHSP)" width="120px"/>
+        </dd>
+
+        <dt>
+            Ngày nhập hàng:
+        </dt>
+
+        <dd>
+            @String.Format("{0:đ/MM/yyyy}",Model.NGAYCAPNHAT)
+        </dd>
+
+        <dt>
+            Số lượng tồn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONGTON)
+        </dd>
+
+        <dt>
+            Tên loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAIRAU.TENLOAI)
+        </dd>
+
+        <dt>
+            Tên nhà cung cấp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHACUNGCAP.TENCC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaSP", new { id = Model.MASP }) |
+    @Html.ActionLink("Trở về", "Rau")
+</p>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebBanRauProject.Models.SANPHAM>
+@{ 
+    ViewBag.Title = "Web bán rau sạch";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="container">
+    <span style="text-align: center;color: white; background-color: red"> Phân loại sản phẩm</span>
+    <div class="row articles">
+        @foreach (var sanpham in Model)
+        {
+    <!--articles-->
+
+
+            <div class="col-md-3 col-sm-6">
+                <img alt="@sanpham.TENSP" src="~/images/@sanpham.ANHSP" />
+                <div class="text">
+                    <a href="@Url.Action("Details" , "RauShop" , new { id = sanpham.MALOAI})">
+                        <span>@sanpham.TENSP</span>
+                    </a>
+                    <p>
+                        <span>@sanpham.GIABAN/kg</span>
+                    </p>
+                </div>
+            </div>
+
+
+
+    <!--end-articles-->
+        }
+    </div>
+</div>

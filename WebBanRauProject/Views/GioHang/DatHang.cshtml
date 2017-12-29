@@ -1,0 +1,123 @@
+﻿@using WebBanRauProject.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "Đơn đặt hàng";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:center">Thông tin sản phẩm</h2>
+<div class="container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="col-md-9 cart-area">
+            <div class="sixteen columns cart-section oflow">
+                <!-- Cart -->
+                <table class="table cart-table responsive-table">
+                    <tr>
+                        <th>
+                            Sản phẩm
+                        </th>
+                        <th>
+                            Tên sản phẩm
+                        </th>
+                        <th>
+                            Giá
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Thành tiền
+                        </th>
+                        <th width="50px">
+                        </th>
+                        <th width="50px">
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/images/@item.sANHSP" width="100px" height="100px" />
+                            </td>
+                            <td class="cart-title">
+                                <a href="#">@item.sTenSP</a>
+                            </td>
+
+                            @using (Html.BeginForm("Capnhatgiohang", "GioHang", new { @iMaSP = item.iMaSP }))
+                            {
+                                <td>
+                                    @String.Format("{0:0,0}", item.dGiaBan)
+                                </td>
+                                <td>
+                                    <input type="text" name="txtSoLuong" value="@item.iSoLuong" />
+                                </td>
+                                <td class="cart-total">
+                                    @String.Format("{0:0,0}", item.dThanhTien)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Deatails","RauShop", new { id = item.iMaSP})">Chi tiết</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Xóa", "Xoagiohang", new { @iMaSP = item.iMaSP })
+                                </td>
+                                <td><input type="submit" value="Cập nhật" /></td>
+                            }
+
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="4">Số lượng sản phẩm: @ViewBag.Tongsoluong</td>
+                        <td colspan="4">Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
+
+                    </tr>
+                    <!-- Item #1 -->
+
+                </table>
+            </div>
+           
+            <!-- Start -->
+            <!-- end -->
+        </div>
+    </div>
+</div>
+<h2 style="text-align:center">THÔNG TIN ĐƠN HÀNG</h2>
+@{
+    KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+}
+<table align="center">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td> Họ tên khách hàng: </td>
+            <td style="font-weight:bold; color:green">@kh.HOTEN</td>
+        </tr>
+        <tr style="height:40px">
+            <td> Địa chỉ khách hàng: </td>
+            <td style="font-weight:bold">@kh.DiachiKH</td>
+        </tr>
+        <tr style="height:40px">
+            <td> Điện thoại khách hàng: </td>
+            <td style="font-weight:bold">@kh.DIENTHOAIKH</td>
+        </tr>
+        <tr style="height:40px">
+            <td> Ngày đặt hàng: </td>
+            <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr style="height:40px">
+            <td> Ngày giao hàng: </td>
+            <td>
+                <input type="date" name="Ngaygiao" />
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Đồng ý đặt hàng" />
+            </td>
+        </tr>
+    }
+</table>
+
+

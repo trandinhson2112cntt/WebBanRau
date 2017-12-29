@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebBanRauProject.Models.LOAIRAU>
+
+
+<li class="dropdown">
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("LoaiSanPham","RauShop",new { id = item.MALOAI })" data-toggle="dropdown" class="dropdown-toggle">Sản phẩm</a>
+    <ul class="dropdown-menu">
+        @item.TENLOAI
+    </ul>
+</li>

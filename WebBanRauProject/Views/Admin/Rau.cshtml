@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebBanRauProject.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Rau";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý sản ph</h2>
+
+<p style="font-size:20px; color:cornflowerblue">
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">Tên sản phẩm
+        </th>
+        <th style="width:200px">Giá bán/kg</th>
+        <th style="width:200px">Mô tả</th>
+        <th style="width:200px">Ảnh</th>       
+         <th style="width:200px">Ngày nhập</th>    
+            <th style="width:200px"> Số lượng tồn</th>        
+        <th style="width:200px">Loại rau</th>
+        <th style="width:200px">Tên nhà cung cấp</th>
+        <th>Chứ năng</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIABAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOTA)
+        </td>
+        <td>
+            <img src="@Url.Content("~/images/"+item.ANHSP)" width="150px" height="150px">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYCAPNHAT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOLUONGTON)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOAIRAU.TENLOAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHACUNGCAP.TENCC)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MASP }) |
+            @Html.ActionLink("Chi tiết", "Chitietrau", new { id=item.MASP }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MASP })
+        </td>
+    </tr>
+}
+
+</table>

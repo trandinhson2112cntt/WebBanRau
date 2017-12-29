@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    @*<title>SHKShop</title>*@
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">*@
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" media="screen">
+    <link rel="stylesheet" href="~/Content/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/responsive.css" type="text/css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="top-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 user">
+                    <p>
+                        Chào mừng đến với SHK
+                    </p>
+                </div>
+                <div class="col-md-6 language">
+                    <ul>
+                        <li><a href="#">Eng</a></li>
+                        <li><a href="#">Usd</a></li>
+                        <li>
+                            <a data-toggle="dropdown" class="dropdown-toggle">Tài khoản</a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("DangNhap" , "NguoiDung")">Đăng nhập</a></li>
+                                <li><a href="@Url.Action("DangKy" , "NguoiDung")">Đăng ký</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container header">
+        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="~/images/logo.png" alt="logo"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Trang chủ", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Quản lý sản phẩm", "SanPham", "Admin")</li>
+                        <li>@Html.ActionLink("Các nhà cung cấp", "NhaCungCap", "Admin")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

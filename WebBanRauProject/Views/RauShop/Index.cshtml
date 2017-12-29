@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container">
+    <span style="text-align: center;color: white; background-color: red"> Sản phẩm mới về</span>
+    <div class="row articles">
+        @foreach (var sanpham in Model)
+        {
+    <!--articles-->
+
+
+            <div class="col-md-3 col-sm-6">
+                <a href="@Url.Action("Details", "RauShop", new { id = sanpham.MASP })">
+                    <img alt="@sanpham.TENSP" src="~/images/@sanpham.ANHSP" />
+                </a>
+                <div class="text">
+                    <a href="@Url.Action("Details" , "RauShop" , new { id = sanpham.MASP})">
+                        <span>@sanpham.TENSP</span>
+                    </a>
+                    <p>
+                        <span>@sanpham.GIABAN/kg</span>
+                    </p>
+                </div>
+            </div>
+
+
+
+    <!--end-articles-->
+        }
+    </div>
+</div>
+
+
