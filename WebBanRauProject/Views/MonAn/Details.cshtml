@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!-- Cho du lieu ra giua man hinh-->
+<div class="container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+
+            <div>
+                <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
+                    <img src="~/images/@Model.HINHANH" width="100%" />
+                </div>
+                <div style="width:60%; float:left;padding:10px">
+                    <h4 style="font-weight:bold; color:red">Tên rau: @Model.TENMONAN</h4>
+                    <p style="text-align:justify"><span style="font-weight:bold">Mô tả:</span>@Model.MOTA</p>
+                    
+                </div>
+               
+            </div>
+
+            <div class="item active">
+                <ul class="partner-list">
+                    <li><img alt="" src="~/images/client1.png"></li>
+                    <li><img alt="" src="~/images/client2.png"></li>
+                    <li><img alt="" src="~/images/client3.png"></li>
+                    <li><img alt="" src="~/images/client4.png"></li>
+                </ul>
+            </div>
+            <div class="item">
+                <ul class="partner-list">
+                    <li><img alt="" src="~/images/client1.png"></li>
+                    <li><img alt="" src="~/images/client2.png"></li>
+                    <li><img alt="" src="~/images/client3.png"></li>
+                    <li><img alt="" src="~/images/client4.png"></li>
+                </ul>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
