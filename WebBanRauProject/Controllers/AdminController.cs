@@ -183,10 +183,11 @@ namespace WebBanRauProject.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    
-                    //Luu vao CSDL   
-                    UpdateModel(khachhang);
-                    data.SubmitChanges();
+               
+                //Luu vao CSDL  
+               
+                UpdateModel(khachhang);
+                data.SubmitChanges();
 
                 }
                 return RedirectToAction("KhachHang");
