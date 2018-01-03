@@ -16,10 +16,16 @@ namespace WebBanRauProject.Controllers
         {
             return View();
         }
+
         public ActionResult Rau()
         {
             return View(data.SANPHAMs.ToList());
         }
+        public ActionResult KhachHang()
+        {
+            return View(data.KHACHHANGs.ToList());
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -61,12 +67,12 @@ namespace WebBanRauProject.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult ThemmoiRau(SANPHAM sp,HttpPostedFileBase fileupload)
+        public ActionResult ThemmoiRau(SANPHAM sp, HttpPostedFileBase fileupload)
         {
             ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
 
             ViewBag.MaNCC = new SelectList(data.NHACUNGCAPs.ToList().OrderBy(n => n.TENCC), "MaNCC", "TenCC");
-            if(fileupload == null)
+            if (fileupload == null)
             {
                 ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
             }
@@ -99,12 +105,94 @@ namespace WebBanRauProject.Controllers
             //lay doi tuong
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
             ViewBag.MaSP = sp.MASP;
-            if(sp == null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
             return View(sp);
         }
-    }
+
+        public ActionResult ChitietKhachHang(int makh)
+        {
+            //lay doi tuong
+            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
+            ViewBag.MaSP = kh.MAKH;
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(kh);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteKhachHang(int makh)
+        
+{
+            //lay doi tuong
+            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
+            ViewBag.MaSP = kh.MAKH;
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(kh);
+        }
+
+        [HttpPost,ActionName("DeleteKhachHang")]
+
+        public ActionResult DeleteKH(int makh)
+        {
+            //lay doi tuong
+            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
+            ViewBag.MaKH = kh.MAKH;
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.KHACHHANGs.DeleteOnSubmit(kh);
+            data.SubmitChanges();
+
+            return RedirectToAction("KhachHang");
+        }
+        public ActionResult Lienhe()
+        {
+            return null;
+        }
+        [HttpGet]
+        public ActionResult SuaKH(int makh)
+        {
+            //lay doi tuong
+            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
+            ViewBag.MaKH = kh.MAKH;
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(kh);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaKH(KHACHHANG khachhang)
+        {
+            
+
+                if (ModelState.IsValid)
+                {
+                    
+                    //Luu vao CSDL   
+                    UpdateModel(khachhang);
+                    data.SubmitChanges();
+
+                }
+                return RedirectToAction("KhachHang");
+            
+        }
+
+
+    } 
 }

@@ -18,6 +18,20 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+                    fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div style="position:fixed; z-index:9999999; right:10px; bottom:10px;" class="fb-page" data-tabs="messages"
+         data-href="https://www.facebook.com/SHK-1870324903280300/?modal=admin_todo_tour" data-width="250" data-height="300"
+         data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
     <div class="top-strip">
         <div class="container">
             <div class="row">
@@ -65,9 +79,9 @@
                         <!-- <li><a href="single.html">Single</a></li> -->
                         <li><a href="cart.html">Giỏ hàng</a></li>
                         <li><a href="checkout.html">Thanh toán</a></li>
-                        <li><a href="about.html">Thông tin cửa hàng</a></li>
+                        <li><a href="@Url.Action("ThongTin", "RauShop")">Thông tin cửa hàng</a></li>
 
-                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="@Url.Action("LienHe", "RauShop")">Liên hệ</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
