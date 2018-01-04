@@ -1,0 +1,29 @@
+﻿@model WebBanRauProject.Models.KHACHHANG
+@{
+    ViewBag.Title = "ThongTinKhachHang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>ThongTinKhachHang</h2>
+<table>
+    <tr>
+        <td>Tên Khách Hàng: </td>
+        <td>@Model.HOTEN</td>
+    </tr>
+    <tr>
+        <td>Ngày sinh: </td>
+        <td>@Model.NGAYSINH</td>
+    </tr>
+    <tr>
+        <td>Địa chỉ: </td>
+        <td>@Model.DiachiKH</td>
+    </tr>
+    <tr>
+        <td>Số điện thoại: </td>
+        <td>@Model.DIENTHOAIKH</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>@Html.ActionLink("Sửa","SuaThongTinKH", new { id = Model.MAKH })</td>
+    </tr>
+</table>

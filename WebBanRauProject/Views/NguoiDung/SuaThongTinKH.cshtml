@@ -1,0 +1,38 @@
+﻿@model WebBanRauProject.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "SuaThongTinKH";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>SuaThongTinKH</h2>
+
+@using (Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>Tên Khách Hàng: </td>
+        <td>@Html.TextBoxFor(s => s.HOTEN)</td>
+    </tr>
+    <tr>
+        <td>Ngày sinh: </td>
+        <td>@Html.TextBoxFor(s => s.NGAYSINH)</td>
+    </tr>
+    <tr>
+        <td>Địa chỉ: </td>
+        <td>@Html.TextBoxFor(s => s.DiachiKH)</td>
+    </tr>
+    <tr>
+        <td>Số điện thoại: </td>
+        <td>@Html.TextBoxFor(s => s.DIENTHOAIKH)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" name="update" value="Cập nhập" /></td>
+    </tr>
+</table>
+}
+
+<div>
+    @Html.ActionLink("Trờ về", "ThongTinKhachHang")
+</div>

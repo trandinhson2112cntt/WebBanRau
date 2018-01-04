@@ -113,5 +113,42 @@ namespace WebBanRauProject.Controllers
                 ViewBag.TenKhachHang = kh.HOTEN;
             return PartialView();
         }
+
+        public ActionResult ThongTinKhachHang()
+        {
+            KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+            if (kh != null)
+            {
+                var khachhang = data.KHACHHANGs.First(k => k.MAKH == kh.MAKH);
+                return View(khachhang);
+            }
+            else
+                return RedirectToAction("DangNhap");
+        }
+
+        public ActionResult SuaThongTinKH(int id)
+        {
+            var kh = data.KHACHHANGs.First(k => k.MAKH == id);
+            return View(kh);
+        }
+        [HttpPost]
+        public ActionResult SuaThongTinKH(int id,FormCollection collection)
+        {
+            var kh = data.KHACHHANGs.First(k => k.MAKH == id);
+            string tenKH = collection["HOTEN"];
+            DateTime ngaySinh = DateTime.Parse(collection["NGAYSINH"]);
+            string diaChi = collection["DiachiKH"];
+            string dienThoai = collection["DIENTHOAIKH"];
+
+            kh.HOTEN = tenKH;
+            kh.NGAYSINH = ngaySinh;
+            kh.DiachiKH = diaChi;
+            kh.DIENTHOAIKH = dienThoai;
+
+            UpdateModel(kh);
+            data.SubmitChanges();
+            return RedirectToAction("ThongTinKhachHang");
+        }
     }
+    
 }

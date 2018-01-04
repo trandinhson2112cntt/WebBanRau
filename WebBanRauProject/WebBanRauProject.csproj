@@ -322,7 +322,15 @@
     <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
     <Content Include="Views\NguoiDung\DangNhapPartial.cshtml" />
+    <Content Include="Views\RauShop\LienHe.cshtml" />
+    <Content Include="Views\RauShop\ThongTin.cshtml" />
+    <Content Include="Views\Admin\KhachHang.cshtml" />
+    <Content Include="Views\Admin\ChitietKhachHang.cshtml" />
+    <Content Include="Views\Admin\DeleteKhachHang.cshtml" />
+    <Content Include="Views\Admin\SuaKH.cshtml" />
     <Content Include="Views\Admin\SuaRau.cshtml" />
+    <Content Include="Views\NguoiDung\ThongTinKhachHang.cshtml" />
+    <Content Include="Views\NguoiDung\SuaThongTinKH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
