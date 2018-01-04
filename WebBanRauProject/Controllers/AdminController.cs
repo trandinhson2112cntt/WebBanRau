@@ -106,5 +106,49 @@ namespace WebBanRauProject.Controllers
             }
             return View(sp);
         }
+        [HttpGet]
+        public ActionResult SuaRau(int id)
+        {
+            SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
+            if(sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View();
+        }
+        
+        public ActionResult SuaRau(SANPHAM sp,HttpPostedFileBase fileupload)
+        {
+            ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
+
+            ViewBag.MaNCC = new SelectList(data.NHACUNGCAPs.ToList().OrderBy(n => n.TENCC), "MaNCC", "TenCC");
+            if (fileupload == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileupload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileupload.SaveAs(path);//Luu file vao duong dan
+
+                    sp.ANHSP = fileName;
+
+                    UpdateModel(sp);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("Rau");
+            }
+            return View();
+        }
     }
 }
