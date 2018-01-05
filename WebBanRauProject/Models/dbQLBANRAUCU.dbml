@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLBANRAUCU" Class="dbQLBANRAUCUDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DEATH\SQLEXPRESS;Initial Catalog=QLBANRAUCU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRAUCUConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-47T10HP\SQLEXPRESS;Initial Catalog=QLBANRAUCU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRAUCUConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Admin" Member="Admins">
     <Type Name="Admin">
       <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -76,17 +76,10 @@
   </Table>
   <Table Name="dbo.QuanLyGoiYMonAn" Member="QuanLyGoiYMonAns">
     <Type Name="QuanLyGoiYMonAn">
-      <Column Name="MASO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENMONAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.QuanLyTinTuc" Member="QuanLyTinTucs">
-    <Type Name="QuanLyTinTuc">
-      <Column Name="MATIN" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TIEUDE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NGAYDANGTIN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HINHANH" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
