@@ -1,0 +1,52 @@
+﻿@model WebBanRauProject.Models.KHACHHANG
+@{
+    ViewBag.Title = "ChitietKhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi Tiết Khách Hàng</h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khách hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN)
+        </dd>
+
+        <dt>
+            Địa chỉ: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model=>model.DiachiKH)
+        </dd>
+
+        <dt>
+            Ngày sinh:
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.NGAYSINH)
+        </dd>
+
+        <dt>
+            Điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model=>model.DIENTHOAIKH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaKH", new { makh = Model.MAKH }) |
+    @Html.ActionLink("Trở về", "KhachHang")
+</p>
+
+

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebBanRauProject.Models.KHACHHANG>
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý khách hàng</h2>
+
+<p style="font-size:20px; color:cornflowerblue">
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px">
+            Mã khách hàng
+        </th>
+        <th style="width:200px">Họ tên</th>
+        <th style="width:200px">Tài khoản</th>
+        <th style="width:200px">Mật khẩu</th>
+        <th style="width:200px">Ngày sinh</th>
+        <th style="width:200px">Địa chỉ</th>
+        <th style="width:200px">Điện thoại</th>
+        <th>Chứ năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem=>item.MAKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TAIKHOAN)
+            </td>
+>
+            <td>
+                @Html.DisplayFor(modelItem => item.MATKHAU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYSINH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIENTHOAIKH)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "SuaKH", new { makh = item.MAKH }) |
+                @Html.ActionLink("Chi tiết", "ChitietKhachHang", new { makh = item.MAKH }) |
+                @Html.ActionLink("Xóa", "DeleteKhachHang", new { makh = item.MAKH })
+            </td>
+        </tr>
+    }
+
+</table>
