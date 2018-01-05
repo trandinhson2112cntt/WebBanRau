@@ -1,0 +1,57 @@
+﻿@model WebBanRauProject.Models.QuanLyGoiYMonAn
+
+@{
+    ViewBag.Title = "XoaMonAn";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XoaMonAn</h2>
+
+<h3>Bạn xác định xóa món ăn này ?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Số:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASO)
+        </dd>
+
+        <dt>
+           Tên món ăn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENMONAN)
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            Hình ảnh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> 
+            @Html.ActionLink("Trở Về", "MonAn")
+        </div>
+    }
+</div>

@@ -51,6 +51,9 @@ namespace WebBanRauProject.Models
     partial void InsertNHACUNGCAP(NHACUNGCAP instance);
     partial void UpdateNHACUNGCAP(NHACUNGCAP instance);
     partial void DeleteNHACUNGCAP(NHACUNGCAP instance);
+    partial void InsertQuanLyGoiYMonAn(QuanLyGoiYMonAn instance);
+    partial void UpdateQuanLyGoiYMonAn(QuanLyGoiYMonAn instance);
+    partial void DeleteQuanLyGoiYMonAn(QuanLyGoiYMonAn instance);
     #endregion
 		
 		public dbQLBANRAUCUDataContext() : 
@@ -1624,8 +1627,10 @@ namespace WebBanRauProject.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuanLyGoiYMonAn")]
-	public partial class QuanLyGoiYMonAn
+	public partial class QuanLyGoiYMonAn : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _MASO;
 		
@@ -1635,11 +1640,26 @@ namespace WebBanRauProject.Models
 		
 		private string _HINHANH;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMASOChanging(int value);
+    partial void OnMASOChanged();
+    partial void OnTENMONANChanging(string value);
+    partial void OnTENMONANChanged();
+    partial void OnMOTAChanging(string value);
+    partial void OnMOTAChanged();
+    partial void OnHINHANHChanging(string value);
+    partial void OnHINHANHChanged();
+    #endregion
+		
 		public QuanLyGoiYMonAn()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASO", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASO", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MASO
 		{
 			get
@@ -1650,7 +1670,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._MASO != value))
 				{
+					this.OnMASOChanging(value);
+					this.SendPropertyChanging();
 					this._MASO = value;
+					this.SendPropertyChanged("MASO");
+					this.OnMASOChanged();
 				}
 			}
 		}
@@ -1666,7 +1690,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._TENMONAN != value))
 				{
+					this.OnTENMONANChanging(value);
+					this.SendPropertyChanging();
 					this._TENMONAN = value;
+					this.SendPropertyChanged("TENMONAN");
+					this.OnTENMONANChanged();
 				}
 			}
 		}
@@ -1682,7 +1710,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._MOTA != value))
 				{
+					this.OnMOTAChanging(value);
+					this.SendPropertyChanging();
 					this._MOTA = value;
+					this.SendPropertyChanged("MOTA");
+					this.OnMOTAChanged();
 				}
 			}
 		}
@@ -1698,8 +1730,32 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._HINHANH != value))
 				{
+					this.OnHINHANHChanging(value);
+					this.SendPropertyChanging();
 					this._HINHANH = value;
+					this.SendPropertyChanged("HINHANH");
+					this.OnHINHANHChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

@@ -8,7 +8,8 @@
 <h2>MonAn</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm món ăn", "Create")
+  
 </p>
 <table class="table">
     <tr>
@@ -42,9 +43,9 @@
             @Html.DisplayFor(modelItem => item.HINHANH)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Sửa", "SuaMonAn", new { id=item.MASO }) |
             @Html.ActionLink("Chi Tiết", "ChitietMonAn", new {  id=item.MASO }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Xóa", "XoaMonAn", new { id =item.MASO })
         </td>
     </tr>
 }

@@ -76,7 +76,7 @@
   </Table>
   <Table Name="dbo.QuanLyGoiYMonAn" Member="QuanLyGoiYMonAns">
     <Type Name="QuanLyGoiYMonAn">
-      <Column Name="MASO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENMONAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HINHANH" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
