@@ -113,6 +113,148 @@ namespace WebBanRauProject.Controllers
             return View(sp);
         }
 
+        public ActionResult MonAn()
+        {
+            return View(data.QuanLyGoiYMonAns.ToList());
+        }
+        [HttpGet]
+        public ActionResult ThemMonAn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThemMonAn(QuanLyGoiYMonAn mon, HttpPostedFileBase fileupload)
+        {
+            
+            if (fileupload == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh cho món ăn";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileupload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileupload.SaveAs(path);//Luu file vao duong dan
+
+                    mon.HINHANH = fileName;
+
+                    data.QuanLyGoiYMonAns.InsertOnSubmit(mon);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("MonAn");
+            }
+            return View();
+        }
+
+        public ActionResult ChitietMonAn(int id)
+        {
+            //lay doi tuong
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(mon);
+        }
+
+        public ActionResult XoaMonAn(int id)
+        {
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(mon);
+        }
+
+        [HttpPost,ActionName("XoaMonAn")]
+        public ActionResult XacNhanXoa(int id)
+        {
+            //lấy ra đối tượng món ăn xóa theo mã số
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+             ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.QuanLyGoiYMonAns.DeleteOnSubmit(mon);
+            data.SubmitChanges();
+            return RedirectToAction("MonAn");
+
+        }
+
+    //Chỉnh sửa món ăn:
+
+        [HttpGet]
+        public ActionResult SuaMonAn(int id)
+        // lấy ra đối tượng món ăn theo mã số
+        {
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(mon);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaMonAn(QuanLyGoiYMonAn ql,HttpPostedFileBase fileUpload)
+        {
+            if(fileUpload == null)
+            {
+                ViewBag.ThongBao = "Vui lòng chọn ảnh món ăn.";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileUpload.SaveAs(path);//Luu file vao duong dan
+
+                    ql.HINHANH = fileName;
+
+                    UpdateModel(ql);
+                    data.SubmitChanges();
+                    
+                }
+                return RedirectToAction("Rau");
+            }
+            return RedirectToAction("Rau");
+        }
+        
+
+        
+
+
+    }
+    
+   
+
+
+}
+
         public ActionResult ChitietKhachHang(int makh)
         {
             //lay doi tuong

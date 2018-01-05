@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebBanRauProject.Models.QuanLyGoiYMonAn>
+
+@{
+    ViewBag.Title = "MonAn";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>MonAn</h2>
+
+<p>
+    @Html.ActionLink("Thêm món ăn", "Create")
+  
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MASO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENMONAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HINHANH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MASO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENMONAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HINHANH)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "SuaMonAn", new { id=item.MASO }) |
+            @Html.ActionLink("Chi Tiết", "ChitietMonAn", new {  id=item.MASO }) |
+            @Html.ActionLink("Xóa", "XoaMonAn", new { id =item.MASO })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model WebBanRauProject.Models.QuanLyGoiYMonAn
+
+@{
+    ViewBag.Title = "Chi Tiết Món Ăn";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ChitietMonAn</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Món Ăn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASO)
+        </dd>
+
+        <dt>
+            Ten món ăn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENMONAN)
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            Hình Ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+Model.HINHANH)" width="120px" />       
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

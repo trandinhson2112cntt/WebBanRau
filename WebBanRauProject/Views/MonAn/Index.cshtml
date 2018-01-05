@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container">
+    <span style="text-align: center;color: white; background-color: red"> Món ăn hằng ngày</span>
+    <div class="row articles">
+        @foreach (var monan in Model)
+        {
+    <!--articles-->
+
+
+            <div class="col-md-3 col-sm-6">
+                <a href="@Url.Action("Details", "MonAn", new { id = monan.MASO })">
+                    <img alt="@monan.TENMONAN" src="~/images/@monan.HINHANH" />
+                </a>
+                <div class="text">
+                    <a href="@Url.Action("Details" , "MonAn" , new { id = monan.MASO})">
+                        <span>@monan.TENMONAN</span>
+                    </a>
+                    
+                </div>
+            </div>
+
+
+
+    <!--end-articles-->
+        }
+    </div>
+</div>
+

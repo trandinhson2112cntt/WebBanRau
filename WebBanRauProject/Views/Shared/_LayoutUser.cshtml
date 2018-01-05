@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -42,10 +41,9 @@
                 </div>
                 <div class="col-md-6 language">
                     <ul>
-                        <li>@Html.Action("DangNhapPartial","NguoiDung")</li>
+                        <li>@Html.Action("DangNhapPartial", "NguoiDung")</li>
                         <li>
                             <a data-toggle="dropdown" class="dropdown-toggle">Tài khoản</a>
-
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("DangNhap" , "NguoiDung")">Đăng nhập</a></li>
                                 <li><a href="@Url.Action("DangKy" , "NguoiDung")">Đăng ký</a></li>
@@ -74,7 +72,6 @@
                         <li class="active"><a href="@Url.Action("Index", "RauShop")">Trang chủ</a></li>
                         <li class="dropdown">@Html.Action("LoaiSanPham", "RauShop")</li>
 
-
                         <!-- <li><a href="shop.html">Sản phẩm</a></li> -->
                         <!-- <li><a href="single.html">Single</a></li> -->
                         <li><a href="cart.html">Giỏ hàng</a></li>
@@ -82,26 +79,33 @@
                         <li><a href="@Url.Action("ThongTin", "RauShop")">Thông tin cửa hàng</a></li>
 
                         <li><a href="@Url.Action("LienHe", "RauShop")">Liên hệ</a></li>
+                        <li><a href="about.html">Thông tin cửa hàng</a></li>
+                        <li class="dropdown">
+                            <a href="" data-toggle="dropdown" class="dropdown-toggle">Tin Tức</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Hàng giảm giá</a></li>
+                                <li><a href="">Hàng mới về</a></li>
+                                <li><a href="">Món ăn hằng ngày</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Liên hệ</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
             <div class="page-title">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 produti">
-                    </div>
-                    <div class="col-md-2 cart">
-                        <h4>@Html.Action("GioHangPartial","GioHang")</h4>
-
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 produti">
+                        </div>
+                        <div class="col-md-2 cart">
+                            <h4>@Html.Action("GioHangPartial", "GioHang")</h4>
+                        </div>
                     </div>
                 </div>
             </div>
+        </nav>
     </div>
-    </nav>
-    </div>
-
-
 
 
     <!--flex-slider-->
@@ -110,25 +114,21 @@
             <li class="slides">
                 <img src="~/images/slide-01.jpg" alt="slide 01">
                 <div class="slide-caption">
-
                 </div>
             </li>
             <li class="slides">
                 <img src="~/images/slide-02.jpg" alt="slide 01">
                 <div class="slide-caption">
-
                 </div>
             </li>
             <li class="slides">
                 <img src="~/images/slide-03.jpg" alt="slide 01">
                 <div class="slide-caption">
-
                 </div>
             </li>
             <li class="slides">
                 <img src="~/images/slide-04.jpg" alt="slide 01">
                 <div class="slide-caption">
-
                 </div>
             </li>
         </ul>
@@ -139,7 +139,6 @@
         <div class="icon-blocks">
             <div class="col-md-4">
                 <p>
-
                     <i class="fa fa-heart" aria-hidden="true" style="color: red; font-size:50px"></i>Thân thiện và an toàn
                 </p>
             </div>
@@ -159,34 +158,33 @@
     <div>
         @RenderBody()
     </div>
-
     <!-- partners box -->
     @*<div class="container">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <ul class="partner-list">
-                        <li><img alt="" src="~/images/client1.png"></li>
-                        <li><img alt="" src="~/images/client2.png"></li>
-                        <li><img alt="" src="~/images/client3.png"></li>
-                        <li><img alt="" src="~/images/client4.png"></li>
-                    </ul>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <ul class="partner-list">
+                            <li><img alt="" src="~/images/client1.png"></li>
+                            <li><img alt="" src="~/images/client2.png"></li>
+                            <li><img alt="" src="~/images/client3.png"></li>
+                            <li><img alt="" src="~/images/client4.png"></li>
+                        </ul>
+                    </div>
+                    <div class="item">
+                        <ul class="partner-list">
+                            <li><img alt="" src="~/images/client1.png"></li>
+                            <li><img alt="" src="~/images/client2.png"></li>
+                            <li><img alt="" src="~/images/client3.png"></li>
+                            <li><img alt="" src="~/images/client4.png"></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item">
-                    <ul class="partner-list">
-                        <li><img alt="" src="~/images/client1.png"></li>
-                        <li><img alt="" src="~/images/client2.png"></li>
-                        <li><img alt="" src="~/images/client3.png"></li>
-                        <li><img alt="" src="~/images/client4.png"></li>
-                    </ul>
-                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"></a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>
             </div>
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"></a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>
-        </div>
-    </div>*@
+        </div>*@
     <!--end-partners box -->
     <!--articles-->
     @*<div class="container">
@@ -280,7 +278,6 @@
                         <ul>
                             <li> <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;<a href="#" style="color: black; font-weight: bold; ">phetcm@gmail.com - info@thayphet.net </a></li>
                             <li><i class="fa fa-facebook-square" aria-hidden="true"></i>  &nbsp;<a href="https://www.facebook.com/search/top/?q=hutech%20confessions" style="color: black; font-weight: bold; ">www.facebook.com</a></li>
-
                         </ul>
                     </div>
                     <div class="col-md-4 about">

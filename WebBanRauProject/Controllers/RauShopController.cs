@@ -47,15 +47,5 @@ namespace WebBanRauProject.Controllers
             var rau = from sp in data.SANPHAMs select sp;
             return View(rau);
         }
-        public ActionResult LienHe()
-        {
-            return View();
-        }
-        public ActionResult ThongTin()
-        {
-            return View();
-
-        }
-
     }
 }
